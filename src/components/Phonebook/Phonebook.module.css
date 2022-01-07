@@ -1,0 +1,11 @@
+.contact {
+  display: flex;
+  align-items: center;
+}
+.contact__name {
+  margin-right: 20px;
+}
+
+.btn__delete {
+  height: fit-content;
+}
