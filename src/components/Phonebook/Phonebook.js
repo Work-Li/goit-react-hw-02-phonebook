@@ -1,14 +1,14 @@
 import React from 'react';
-import st from './Phonebook.module.css';
+import s from './Phonebook.module.css';
 
 const Phonebook = ({ contacts, onDeleteContact }) => {
   return (
-    <ul>
+    <ul className={s.contact__list}>
       {contacts.map(({ id, name, number }) => (
-        <li key={id} className={st.contact}>
-          <p className={st.contact__name}>{name}</p>
-          <p className={st.contact__number}>{number}</p>
-          <button type="button" className={st.btn__delete} onClick={() => onDeleteContact(id)}>
+        <li key={id} className={s.contact}>
+          <p className={s.contact__name}>{name}:</p>
+          <p className={s.contact__number}>{number}</p>
+          <button type="button" className={s.btn__delete} onClick={() => onDeleteContact(id)}>
             Delete contact
           </button>
         </li>
