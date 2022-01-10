@@ -36,23 +36,14 @@ class App extends React.Component {
     //   contacts: [contact, ...prevState.contacts],
     // }));
 
-    // const notify = () => toast(`${name} is already in contacts.`);
-    //   this.state.contacts.includes({name})? toast.error(notify) :  this.setState(prevState => ({
-    //       contacts: [contact, ...prevState.contacts],
-    //     }));
-
-    // this.setState(prevState => ({
-    //           contacts: prevState.contacts.map(contact => {
-    //               if (contact.name === name) {
-    //                 const notify = () => toast(`${name} is already in contacts.`);
-    //                return toast.error(notify);
-
-    //               }
-    //                 // console.log('такой контакт уже есть');
-    //              return [contact, ...prevState.contacts];
-
-    //           }),
-    //       }));
+    const notify = () => `${name} is already in contacts.`;
+    if (this.state.contacts.find(contact => contact.name === name)) {
+      toast.error(notify);
+    } else {
+      this.setState(({ contacts }) => ({
+        contacts: [contact, ...contacts],
+      }));
+    }
   };
 
   changeFilter = e => {
@@ -67,12 +58,13 @@ class App extends React.Component {
   };
 
   render() {
-    const { contacts, filter } = this.state;
+    const { filter } = this.state;
 
     const filteredContacts = this.getfilteredContacts();
 
     return (
       <>
+        <Toaster />
         <h1 className={s.title}>Phonebook</h1>
         <Form onSubmit={this.addContact} />
 
